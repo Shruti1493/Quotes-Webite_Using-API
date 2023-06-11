@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quotes</title>
+    <style>
+    body{
+        background-color: blueviolet;
+        margin-right: 100px;
+        justify-content: center;
+        display: flex;
+        background-image: url("img1.jpeg");
+    }
+    #Whole-div{
+        border-color: aquamarine;
+        box-shadow: cornflowerblue;
+        border-radius: 10px;
+        border-style: groove;
+        align-items: center;
+        height: 630px;
+        width: 840px;
+        background-color: azure;         
+        margin-top: 80px;
+        text-align: center;  
+    }
+    #butt:hover{
+        background-color: coral;
+    }
+    #First-Row{
+
+        height: 100px;
+        width: 840px;
+        font-size: 70px;
+        font-style: italic;        
+        text-align: center;        
+        background-color: rgb(55, 32, 169);
+        margin: 0 auto;
+    }
+    #Second-Row{
+        height: 300px;
+        float:left;
+        width: 800px;
+        font-size: 50px;
+        font-style: italic;  
+        text-align: center; 
+        align-items: center;       
+        background-color: rgb(131, 63, 133);
+        overflow: hidden;
+        overflow: hidden;
+        padding: 20px;
+    }
+    #Third-Row{
+        float:left;
+        font-size: 50px;
+        font-style: italic; 
+        height: 100px;  
+        text-align: right;   
+        width: 800px;  
+        
+        padding: 20px;
+        background-color:  rgb(157, 28, 73);
+        
+    }
+    #Fourth-Row{
+        float: left;
+        font-size: 40px;
+        font-style: italic; 
+        height: 50px;  
+        width: 840px;
+        text-align: center;     
+        background-color: rgb(157, 28, 73);
+
+    }
+    .full-width-button {
+    display: block;
+    width: 100%;
+    height: 50px;
+    background-color: rgb(35, 212, 239);
+    border-bottom: 1px solid #000;
+    font-size: 20px;
+}
+
+   
+    </style>
+</head>
+<body>
+ 
+    <div id="Whole-div">
+        
+
+        <div id="First-Row">Quotes</div>
+        <div id="Second-Row"></div>
+        <div id="Third-Row"><h2></h2></div>
+        <div id="Fourth-Row">
+            <button id="butt" class="full-width-button" onclick="getQuotes()">Get New Quotes</button>
+        </div>
+    </div>
+
+    <script>
+    const getQuotes = async () => {
+        let realData = "";
+        const ans = document.getElementById("Second-Row");
+        const getNewQuotes = () => {
+            let rnum = Math.floor(Math.random() * 1600);
+            ans.innerText = realData[rnum].text;
+            document.getElementById("Third-Row").innerText = realData[rnum].author;
+        };
+        
+
+        const api = "https://type.fit/api/quotes";
+        try {
+            let data = await fetch(api);
+            realData = await data.json();
+            getNewQuotes();
+        } catch (error) {}
+    };
+
+    
+
+    
+    </script>
+</body>
+</html>
+
+
+
+
+
